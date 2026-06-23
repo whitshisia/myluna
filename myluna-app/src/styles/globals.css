@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@theme {
+  --color-rose: #D4537E;
+  --color-rose-lt: #FBEAF0;
+  --color-rose-md: #F4C0D1;
+  --color-rose-dk: #72243E;
+  --color-plum: #4B1528;
+  --color-blush: #FDF5F7;
+  --color-amber: #EF9F27;
+  --color-green: #639922;
+  --color-text: #2C1620;
+  --color-muted: #7A5060;
+}
+
+@layer base {
+  * {
+    @apply box-border m-0 p-0;
+  }
+  
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply font-sans text-text bg-blush antialiased;
+  }
+  
+  /* Dark mode support */
+  [data-theme="dark"] {
+    --color-blush: #1a1a2e;
+    --color-text: #e8d5e0;
+    --color-muted: #a8909a;
+    --color-plum: #e8d5e0;
+  }
+  
+  [data-theme="dark"] body {
+    @apply bg-[#1a1a2e];
+  }
+  
+  [data-theme="dark"] .bg-white {
+    @apply bg-[#16213e];
+  }
+  
+  [data-theme="dark"] .bg-blush {
+    @apply bg-[#1a1a2e];
+  }
+  
+  [data-theme="dark"] .border-rose-md {
+    @apply border-[#2a2a4a];
+  }
+  
+  [data-theme="dark"] .text-plum {
+    @apply text-[#e8d5e0];
+  }
+  
+  [data-theme="dark"] .text-muted {
+    @apply text-[#a8909a];
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-rose text-white px-8 py-3 rounded-full font-medium transition-all hover:bg-rose-dk hover:shadow-lg hover:-translate-y-0.5;
+  }
+  
+  .btn-ghost {
+    @apply border border-rose-md text-muted px-6 py-3 rounded-full font-medium transition-all hover:border-rose hover:text-rose;
+  }
+  
+  .card {
+    @apply bg-white rounded-2xl border border-rose-md p-6 shadow-sm hover:shadow-md transition-all;
+  }
+  
+  .auth-container {
+    @apply min-h-screen flex items-center justify-center bg-blush px-4 py-12;
+  }
+  
+  .auth-card {
+    @apply max-w-md w-full bg-white rounded-2xl shadow-lg p-8;
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-rose-lt rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-rose-md rounded-full hover:bg-rose;
+}
+
+/* Input range styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  @apply h-2 bg-rose-lt rounded-full;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  @apply w-4 h-4 bg-rose rounded-full -mt-1;
+}
+
+input[type="range"]::-moz-range-track {
+  @apply h-2 bg-rose-lt rounded-full;
+}
+
+input[type="range"]::-moz-range-thumb {
+  @apply w-4 h-4 bg-rose rounded-full border-0;
+}
